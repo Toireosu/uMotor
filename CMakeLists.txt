@@ -23,5 +23,14 @@ if(UMOTOR_BUILD_RAYLIB)
     add_subdirectory(backends/raylib)
 endif()
 
-add_subdirectory(examples)
-add_subdirectory(tests)
+option(UMOTOR_BUILD_EXAMPLES "Build Examples" OFF)
+
+if (UMOTOR_BUILD_EXAMPLES)
+    add_subdirectory(examples)
+endif()
+
+option(UMOTOR_BUILD_TESTS "Build Tests" OFF)
+
+if (UMOTOR_BUILD_TESTS)
+    add_subdirectory(tests)
+endif()
