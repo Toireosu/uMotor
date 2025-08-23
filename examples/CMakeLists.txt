@@ -1,0 +1,5 @@
+add_subdirectory(asteroids)
+add_subdirectory(hello_umotor)
+add_subdirectory(bouncing_ball)
+add_subdirectory(particles)
+add_subdirectory(platformer)
