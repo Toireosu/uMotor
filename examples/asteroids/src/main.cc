@@ -42,7 +42,7 @@ bool GuiButton(std::string text, int x, int y, float font_size) {
 
 class MenuScene : public umotor::Scene {
 protected:
-    void handle_gui(umotor::Engine& engine);
+    void handle_gui(umotor::Engine& engine, float delta) override;
 };
 
 class GameScene : public umotor::Scene {
@@ -51,7 +51,7 @@ public:
     bool game_over = false;
     GameScene();
 protected:
-    void handle_gui(umotor::Engine& engine) {
+    void handle_gui(umotor::Engine& engine, float delta) override {
         if (game_over) {
 
             int half_width = WINDOW_WIDTH / 2.0f;
@@ -307,7 +307,7 @@ GameScene::GameScene() {
     set_timer([this]() { add_entity(std::make_unique<Asteroid>()); }, 3.0f, true);
 }
 
-void MenuScene::handle_gui(umotor::Engine& engine) {
+void MenuScene::handle_gui(umotor::Engine& engine, float delta) {
     DrawRectangleGradientV(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, DARKBLUE, DARKPURPLE);
 
     int half_width = WINDOW_WIDTH / 2.0f;

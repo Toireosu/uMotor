@@ -48,7 +48,7 @@ static bool entities_sorted = false;
 class FauxScene : public Scene {
 public:
 protected:
-    void handle_gui(Engine &engine) override {
+    void handle_gui(Engine &engine, float delta) override {
         write_line = true;
         dynamic_cast<FauxEngine*>(&engine)->some_setting = true;
     }

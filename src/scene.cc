@@ -18,7 +18,7 @@ void Scene::set_timer(std::function<void()> callback, float time, bool repeat) {
     timers.push_back((Timer){ .callback = callback, .time = time, .start_time = time, .repeat = repeat});
 }
 
-void Scene::handle_gui(Engine &engine) { }
+void Scene::handle_gui(Engine &engine, float delta) { }
 bool Scene::compare_render_order(const Entity& a, const Entity& b) const { return false; } 
 
 void Scene::add_entity_immediate(std::unique_ptr<Entity> entity, Engine& engine) {
@@ -80,7 +80,7 @@ void Scene::run(Engine &engine, float delta) {
 
     render_entities(engine);
 
-    handle_gui(engine);
+    handle_gui(engine, delta);
 
     end_of_frame();
 }
