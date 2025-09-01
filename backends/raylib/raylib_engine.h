@@ -9,6 +9,9 @@ public:
     Engine(std::string title, int width, int height);
     int get_view_width() { return view_width; }
     int get_view_height() { return view_height; }
+
+    float get_view_scale() { return view_scale; }
+    void force_handle_resize() { was_resized = true; }
 protected:
     void open_window() override;
     float get_delta() override;
@@ -23,4 +26,5 @@ private:
     RenderTexture view_texture;
     float view_scale = 1.0f;
     Vector2 view_position = {0, 0};
+    bool was_resized = false; 
 };

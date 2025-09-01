@@ -5,6 +5,11 @@
 
 class Entity : public umotor::Entity {
 public:
+    void start(umotor::Scene& scene, umotor::Engine& engine) override {
+        SetWindowState(FLAG_BORDERLESS_WINDOWED_MODE);
+        dynamic_cast<Engine&>(engine).force_handle_resize();
+    }
+
     void update(umotor::Scene& scene, umotor::Engine& engine, float delta) override {
         time += delta;
     }

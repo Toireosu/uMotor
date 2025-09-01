@@ -58,7 +58,7 @@ void Engine::end_rendering() {
 }
 
 void Engine::handle_events() {
-    if (IsWindowResized()) {
+    if (IsWindowResized() || was_resized) {
         view_scale = (float)GetScreenWidth() / view_width;
         if (view_scale * view_height > GetScreenHeight()) {
             view_scale = (float)GetScreenHeight() / view_height;
@@ -70,5 +70,6 @@ void Engine::handle_events() {
 
         SetMouseOffset(-view_position.x, -view_position.y);
         SetMouseScale(1 / view_scale, 1 / view_scale);
+        was_resized = false;
     }
 }
