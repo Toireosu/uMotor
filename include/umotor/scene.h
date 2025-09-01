@@ -47,6 +47,7 @@ public:
     }
 
 protected:
+    virtual void load_resources(Engine& engine);
     virtual void handle_gui(Engine &engine, float delta);
     virtual bool compare_render_order(const Entity& a, const Entity& b) const; 
 private:

@@ -20,8 +20,10 @@ void Engine::run() {
 }
 
 void Engine::end_of_frame() {
-    if (next_scene)
+    if (next_scene) {
         current_scene = std::move(next_scene);
+        current_scene->load_resources(*this);
+    }
 }
 
 void Engine::stop() {
@@ -29,8 +31,12 @@ void Engine::stop() {
 }
 
 void Engine::switch_scene(std::unique_ptr<Scene> scene) {
-    if (is_running)     next_scene = std::move(scene);
-    else                current_scene = std::move(scene);
+    if (is_running) {
+        next_scene = std::move(scene);
+    } else {
+        current_scene = std::move(scene);
+        current_scene->load_resources(*this);
+    }
 }
 
 void Engine::handle_events() {} 

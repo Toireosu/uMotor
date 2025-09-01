@@ -3,7 +3,7 @@
 
 class ParticleScene : public umotor::Scene {
 protected:
-    void handle_gui(umotor::Engine& engine) override {
+    void handle_gui(umotor::Engine& engine, float delta) override {
         DrawFPS(0, 0);
     }
 };

@@ -44,10 +44,15 @@ protected:
 
 static bool write_line = false;
 static bool entities_sorted = false;
+static bool scene_resources_loaded = false;
 
 class FauxScene : public Scene {
 public:
 protected:
+    void load_resources(Engine &engine) override {
+        scene_resources_loaded = true;
+    }
+
     void handle_gui(Engine &engine, float delta) override {
         write_line = true;
         dynamic_cast<FauxEngine*>(&engine)->some_setting = true;
@@ -124,6 +129,7 @@ int main(void) {
     assert(end_counter == 3 && "Entities at the end should be 3!");
     assert(entity_rendered && "Entity render should be called!");
 
+    assert(scene_resources_loaded && "Scene load_resources must be called!");
 
     return EXIT_SUCCESS;
 }

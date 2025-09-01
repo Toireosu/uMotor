@@ -18,6 +18,7 @@ void Scene::set_timer(std::function<void()> callback, float time, bool repeat) {
     timers.push_back((Timer){ .callback = callback, .time = time, .start_time = time, .repeat = repeat});
 }
 
+void Scene::load_resources(Engine& engine) {};
 void Scene::handle_gui(Engine &engine, float delta) { }
 bool Scene::compare_render_order(const Entity& a, const Entity& b) const { return false; } 
 
