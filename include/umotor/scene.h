@@ -38,6 +38,14 @@ public:
     
         return matches;
     }
+
+    template <typename EntityType>
+    EntityType* get_first_entity_of_type() const {
+        std::vector<EntityType*> entities = get_entities_of_type<EntityType>();
+    
+        return entities.empty() ? nullptr : entities[0];
+    }
+
 protected:
     virtual void handle_gui(Engine &engine);
     virtual bool compare_render_order(const Entity& a, const Entity& b) const; 

@@ -9,7 +9,7 @@ Player::Player(int x, int y) {
 
 void Player::start(umotor::Scene& scene, umotor::Engine& engine) {
     texture = engine.get_asset<Texture>("assets/spritesheet.png");
-    tile_map = scene.get_entities_of_type<TileMap>()[0];
+    tile_map = scene.get_first_entity_of_type<TileMap>();
 }
 
 static bool check_collision(Vector2 position, TileMap* tile_map) {
